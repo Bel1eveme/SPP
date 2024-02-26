@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecondLab.CustomThreadPull", "SecondLab.CustomThreadPull\SecondLab.CustomThreadPull.csproj", "{A702A817-0933-49A9-A046-501929EDFAFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecondLab.FileCopier", "SecondLab.FileCopier\SecondLab.FileCopier.csproj", "{425789A5-CFFD-49BE-B95C-F074E9549666}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A702A817-0933-49A9-A046-501929EDFAFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A702A817-0933-49A9-A046-501929EDFAFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A702A817-0933-49A9-A046-501929EDFAFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A702A817-0933-49A9-A046-501929EDFAFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{425789A5-CFFD-49BE-B95C-F074E9549666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{425789A5-CFFD-49BE-B95C-F074E9549666}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{425789A5-CFFD-49BE-B95C-F074E9549666}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{425789A5-CFFD-49BE-B95C-F074E9549666}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
