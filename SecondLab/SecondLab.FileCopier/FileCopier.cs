@@ -12,8 +12,6 @@ public class FileCopier
 
     private readonly ConcurrentBag<string> _errorMessages;
 
-    private readonly DirectoryManager _directoryManager;
-
     private string _sourceFolder;
     
     private string _destinationFolder;
@@ -31,8 +29,6 @@ public class FileCopier
         _sourceFolder = string.Empty;
         _destinationFolder = string.Empty;
     }
-
-    
 
     public void CopyFiles(string sourceFolder, string destinationFolder)
     {
@@ -74,10 +70,16 @@ public class FileCopier
             ThreadPool.QueueUserWorkItem(_ => CopySingleFile(file, newFilePath, _copyOptions.DoOverWrite));
         }
 
-        if (!_errorMessages.IsEmpty)
+        while (ThreadPool.PendingWorkItemCount != 0) { }
+        
+        if (_errorMessages.IsEmpty) return;
+        
+        foreach (var message in _errorMessages)
         {
-            throw new FileCopyException(string.Join(Environment.NewLine, _errorMessages));
+            Console.WriteLine(message);
         }
+            
+        throw new FileCopyException(string.Join(Environment.NewLine, _errorMessages));
     }
 
     private void CopySingleFile(string sourceFilePath, string destinationFilePath, bool doOverwrite)

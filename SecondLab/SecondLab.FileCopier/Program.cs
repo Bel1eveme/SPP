@@ -22,7 +22,6 @@ app.AddCommand("copy", (string sourcePath, string destinationPath) =>
         Console.WriteLine(exception.Message);
     }
     
-    
     Console.WriteLine($"{copier.CopiedFilesCount} files had been copied.");
 });
 
