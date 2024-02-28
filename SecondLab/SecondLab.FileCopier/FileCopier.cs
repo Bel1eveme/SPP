@@ -1,4 +1,5 @@
 ﻿using System.Collections.Concurrent;
+using SecondLab.CustomThreadPull;
 using SecondLab.FileCopier.Exceptions;
 
 namespace SecondLab.FileCopier;
@@ -19,6 +20,15 @@ public class FileCopier
     private List<string> _files;
 
     private int _copiedFilesCount;
+
+    private class CopyData(string sourceFilePath, string destinationFilePath, bool doOverwrite)
+    {
+        public string SourceFilePath { get; init; } = sourceFilePath;
+
+        public string DestinationFilePath { get; init; } = destinationFilePath;
+
+        public bool DoOverwrite { get; init; } = doOverwrite;
+    }
     
     public FileCopier(CopyOptions copyOptions)
     {
@@ -63,14 +73,25 @@ public class FileCopier
 
     private void CopyFilesMultithreading()
     {
-        foreach (var file in _files)
+        /*foreach (var file in _files)
         {
             var newFilePath = Path.Combine(_destinationFolder, Path.GetRelativePath(_sourceFolder, file));
             
             ThreadPool.QueueUserWorkItem(_ => CopySingleFile(file, newFilePath, _copyOptions.DoOverWrite));
         }
 
-        while (ThreadPool.PendingWorkItemCount != 0) { }
+        while (ThreadPool.PendingWorkItemCount != 0) { }*/
+
+        TaskQueue<CopyData> queue = new(8);
+
+        foreach (var file in _files)
+        {
+            var newFilePath = Path.Combine(_destinationFolder, Path.GetRelativePath(_sourceFolder, file));
+
+            queue.AddTask(CopySingleFileWithPool, new CopyData(file, newFilePath, _copyOptions.DoOverWrite));
+        }
+
+        queue.EndAllTasks();
         
         if (_errorMessages.IsEmpty) return;
         
@@ -96,6 +117,23 @@ public class FileCopier
                                               or IOException)
         {
             _errorMessages.Add($"{sourceFilePath}: {exception.Message}");
+        }
+    }
+    
+    private void CopySingleFileWithPool(CopyData copyData)
+    {
+        try
+        {
+            File.Copy(copyData.SourceFilePath, copyData.DestinationFilePath, copyData.DoOverwrite);
+
+            Interlocked.Increment(ref _copiedFilesCount);
+        }
+        catch (Exception exception) when (exception is UnauthorizedAccessException
+                                              or DirectoryNotFoundException
+                                              or FileNotFoundException
+                                              or IOException)
+        {
+            _errorMessages.Add($"{copyData.SourceFilePath}: {exception.Message}");
         }
     }
     
