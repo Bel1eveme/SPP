@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForthLab.LogBuffer", "ForthLab.LogBuffer\ForthLab.LogBuffer.csproj", "{5CD10C9E-1C7F-4A5C-A75D-A9E9C60C28FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForthLab.ReverseClock", "ForthLab.ReverseClock\ForthLab.ReverseClock.csproj", "{7259846B-4470-4C28-937C-34F4012F884D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForthLab.Tests", "ForthLab.Tests\ForthLab.Tests.csproj", "{A7C68B82-AACC-4158-9C50-F1D434A8DEE0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5CD10C9E-1C7F-4A5C-A75D-A9E9C60C28FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CD10C9E-1C7F-4A5C-A75D-A9E9C60C28FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CD10C9E-1C7F-4A5C-A75D-A9E9C60C28FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CD10C9E-1C7F-4A5C-A75D-A9E9C60C28FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7259846B-4470-4C28-937C-34F4012F884D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7259846B-4470-4C28-937C-34F4012F884D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7259846B-4470-4C28-937C-34F4012F884D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7259846B-4470-4C28-937C-34F4012F884D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7C68B82-AACC-4158-9C50-F1D434A8DEE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7C68B82-AACC-4158-9C50-F1D434A8DEE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7C68B82-AACC-4158-9C50-F1D434A8DEE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7C68B82-AACC-4158-9C50-F1D434A8DEE0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

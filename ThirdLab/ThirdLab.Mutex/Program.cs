@@ -22,7 +22,7 @@ void DoWork()
     {
         Console.WriteLine("Выполняется критическая секция кода");
         
-        Thread.Sleep(3000);
+        Thread.Sleep(2000);
     }
     finally
     {

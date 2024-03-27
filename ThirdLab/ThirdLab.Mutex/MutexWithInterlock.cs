@@ -3,17 +3,20 @@
 public class MutexWithInterlock
 {
     private int _lockValue = 0;
+
+    private readonly EventWaitHandle _eventWaitHandle = new(false, EventResetMode.AutoReset);
     
     public void Lock()
     {
-        while (Interlocked.Exchange(ref _lockValue, 1) == 1)
+        if (Interlocked.Exchange(ref _lockValue, 1) == 1)
         {
-            Thread.Sleep(10);
+            _eventWaitHandle.WaitOne();
         }
     }
 
     public void Unlock()
     {
+        _eventWaitHandle.Set();
         Interlocked.Exchange(ref _lockValue, 0);
     }
 }
