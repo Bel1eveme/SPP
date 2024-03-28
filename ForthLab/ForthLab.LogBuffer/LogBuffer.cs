@@ -1,5 +1,7 @@
 ﻿using System.Collections.Concurrent;
 using Microsoft.Extensions.Hosting;
+using Quartz;
+using Quartz.Impl;
 
 namespace ForthLab.LogBuffer;
 
@@ -12,7 +14,7 @@ public class LogBuffer
 
     private int _messageCount;
 
-    private readonly IHost serviceHost;
+    private readonly IScheduler _scheduler;
 
     public LogBuffer(LoggerConfiguration loggerConfiguration)
     {
@@ -20,8 +22,28 @@ public class LogBuffer
 
         _messages = [];
         _messageCount = 0;
+        
+        StdSchedulerFactory factory = new StdSchedulerFactory();
+        _scheduler =  factory.GetScheduler().GetAwaiter().GetResult();
+        
+        IJobDetail job = JobBuilder.Create<HelloJob>()
+            .WithIdentity("job1", "group1")
+            .Build();
+        
+        ITrigger trigger = TriggerBuilder.Create()
+            .WithIdentity("trigger1", "group1")
+            .StartNow()
+            .WithSimpleSchedule(x => x
+                .WithIntervalInSeconds(6)
+                .RepeatForever())
+            .Build();
+        
+        _scheduler.pa
+        
+        _scheduler.Start();
+        _scheduler.ScheduleJob(job, trigger);
 
-        //serviceHost = Host
+        PeriodicTimer timer = new PeriodicTimer(TimeSpan.FromMilliseconds(1000));
     }
 
     public async Task AddMessage(string message)
@@ -33,6 +55,7 @@ public class LogBuffer
         {
             await Flush();
             Interlocked.Add(ref _messageCount, -currentMessageCount);
+            _scheduler.
         }
     }
 
