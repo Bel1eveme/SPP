@@ -8,7 +8,7 @@ public class HelloJob : IJob
     
     public async Task Execute(IJobExecutionContext context)
     {
-        if (Interlocked.CompareExchange(ref _shouldRun, 0, 1) == 1)
+        /*if (Interlocked.CompareExchange(ref _shouldRun, 0, 1) == 1)
         {
             // The original value was 1, so we proceed with the execution.
             // Perform job tasks...
@@ -20,7 +20,7 @@ public class HelloJob : IJob
         {
             // The job was set to not run, so return immediately.
             return Task.CompletedTask;
-        }
+        }*/
         
         await Console.Out.WriteLineAsync("Greetings from HelloJob!");
     }
