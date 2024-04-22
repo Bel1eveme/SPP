@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+        <RootNamespace>ForthLab.App</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ForthLab.LogBuffer\ForthLab.LogBuffer.csproj" />
+      <ProjectReference Include="..\ForthLab.ReverseClock\ForthLab.ReverseClock.csproj" />
+    </ItemGroup>
+
+</Project>

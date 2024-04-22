@@ -1,28 +1,23 @@
 ﻿using System.Collections.Concurrent;
-using ForthLab.LogBuffer.Mediator;
-using Quartz;
-using Quartz.Impl;
 
-namespace ForthLab.LogBuffer;
+namespace ForthLab.MessageLogger;
 
-public class Logger : Component
+public class MessageLogger
 {
     private readonly LoggerConfiguration _loggerConfiguration;
 
     private readonly ConcurrentQueue<string> _messages;
 
     private int _messageCount;
-
-    private readonly IScheduler _scheduler;
-
-    public Logger(LoggerConfiguration loggerConfiguration) : base(new LoggerMediator())
+    
+    public MessageLogger(LoggerConfiguration loggerConfiguration)
     {
         _loggerConfiguration = loggerConfiguration;
 
         _messages = [];
         _messageCount = 0;
     }
-
+    
     public async Task AddMessage(string message)
     {
         _messages.Enqueue(message);
@@ -30,7 +25,8 @@ public class Logger : Component
         
         if (currentMessageCount == _loggerConfiguration.ResetMessageCount)
         {
-            await Mediator.Notify(this, "messageCountReached");
+            await Flush();
+            //await RestartScheduler();
         }
     }
 

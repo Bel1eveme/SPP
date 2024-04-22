@@ -1,4 +1,4 @@
-﻿namespace ForthLab.ReverseClock;
+﻿namespace ForthLab.ReverseClock.Notifier;
 
 public class MessageService
 {
@@ -8,29 +8,35 @@ public class MessageService
 
     private readonly CancellationTokenSource _cancellationTokenSource;
 
-    public MessageService(TimeSpan interval)
+    private readonly INotifier _notifier;
+
+    public MessageService(TimeSpan interval, INotifier notifier)
     {
+        _notifier = notifier;
         _timer = new PeriodicTimer(interval);
 
         _cancellationTokenSource = new();
     }
 
-    public void Start(Action operationDelegate)
+    public void Start()
     {
-        _timerTask = DoWorkAsync(operationDelegate);
+        Console.WriteLine("Service started");
+        
+        _timerTask = DoWorkAsync();
     }
 
-    private async Task DoWorkAsync(Action operationDelegate)
+    private async Task DoWorkAsync()
     {
         try
         {
             while (await _timer.WaitForNextTickAsync(_cancellationTokenSource.Token))
             {
-                operationDelegate.Invoke();
+                _notifier.Notify();
             }
         }
         catch (OperationCanceledException)
         {
+            Console.WriteLine(nameof(OperationCanceledException));
         }
     }
 
@@ -45,6 +51,6 @@ public class MessageService
         await _timerTask;
         _cancellationTokenSource.Dispose();
         
-        Console.WriteLine("Task was canceled");
+        Console.WriteLine("Server canceled");
     }
 }

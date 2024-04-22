@@ -6,6 +6,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForthLab.ReverseClock", "Fo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForthLab.Tests", "ForthLab.Tests\ForthLab.Tests.csproj", "{A7C68B82-AACC-4158-9C50-F1D434A8DEE0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForthLab.ConsoleApp", "ForthLab.ConsoleApp\ForthLab.ConsoleApp.csproj", "{1A95E1E9-D8C4-4E96-9500-53809F318CE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForthLab.ConsoleDiApp", "ForthLab.ConsoleDiApp\ForthLab.ConsoleDiApp.csproj", "{C9A28611-9C99-435A-8A1D-28EA776DAEFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForthLab.ConsoleAppForLogger", "ForthLab.ConsoleAppForLogger\ForthLab.ConsoleAppForLogger.csproj", "{09EB8417-B245-484A-BEF1-14B0AAC054D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForthLab.SimpleLogger", "ForthLab.SimpleLogger\ForthLab.SimpleLogger.csproj", "{09598982-8332-42D6-9738-5404E44295A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +32,21 @@ Global
 		{A7C68B82-AACC-4158-9C50-F1D434A8DEE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7C68B82-AACC-4158-9C50-F1D434A8DEE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7C68B82-AACC-4158-9C50-F1D434A8DEE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A95E1E9-D8C4-4E96-9500-53809F318CE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A95E1E9-D8C4-4E96-9500-53809F318CE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A95E1E9-D8C4-4E96-9500-53809F318CE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A95E1E9-D8C4-4E96-9500-53809F318CE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9A28611-9C99-435A-8A1D-28EA776DAEFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9A28611-9C99-435A-8A1D-28EA776DAEFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9A28611-9C99-435A-8A1D-28EA776DAEFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9A28611-9C99-435A-8A1D-28EA776DAEFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09EB8417-B245-484A-BEF1-14B0AAC054D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09EB8417-B245-484A-BEF1-14B0AAC054D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09EB8417-B245-484A-BEF1-14B0AAC054D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09EB8417-B245-484A-BEF1-14B0AAC054D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09598982-8332-42D6-9738-5404E44295A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09598982-8332-42D6-9738-5404E44295A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09598982-8332-42D6-9738-5404E44295A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09598982-8332-42D6-9738-5404E44295A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
